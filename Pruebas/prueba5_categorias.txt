@@ -1,0 +1,16 @@
+namespace Demo {
+    class Ejemplo {
+        char letra = 'a';
+        char salto = '\n';
+        string texto = "A\tB\"C";
+        bool activo = true;
+        if (activo && !false || 2 >= 1) {
+            letra = 'b'; // comentario de línea
+        }
+        /* comentario
+           de bloque */
+        int numero = 10;
+        numero++;
+        numero -= 2;
+    }
+}

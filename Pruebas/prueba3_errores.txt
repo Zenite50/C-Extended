@@ -1,0 +1,19 @@
+namespace Errores
+{
+    class Prueba
+    {
+        // Error 1: Identificador inicia con numero
+        var 12variable = 10;
+
+        // Error 2: Numero decimal mal formado
+        var precio = 45.12.3;
+
+        // Error 3: Cadena sin cerrar
+        var mensaje = "Hola mundo sin comilla de cierre ;
+
+        /* Error 4: Comentario multilineal sin cerrar
+
+        // Error 5: Caracter no permitido
+        var total = 100 @ 50;
+    }
+}

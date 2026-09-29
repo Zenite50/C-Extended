@@ -1,0 +1,4 @@
+var antes = 1;
+@ var despues = 2;
+var precio = 45.12.3;
+var final = despues + 1;
