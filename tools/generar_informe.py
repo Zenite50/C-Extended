@@ -65,8 +65,72 @@ def encabezado(c, numero, titulo):
     c.setFillColor(GRIS)
     c.setFont("Arial", 8)
     c.drawString(MARGEN, 31, "Entregable 3  |  Implementación del motor léxico")
-    c.drawRightString(ANCHO - MARGEN, 31, str(numero) + " / 3")
+    c.drawRightString(ANCHO - MARGEN, 31, str(numero) + " / 4")
     return ALTO - 110
+
+
+def portada(c):
+    encabezado_cunor = BASE / "tools" / "assets" / "encabezado_cunor.png"
+    alto_encabezado = 165
+    c.drawImage(str(encabezado_cunor), 0, ALTO - alto_encabezado,
+                width=ANCHO, height=alto_encabezado, preserveAspectRatio=False)
+
+    c.setFillColor(colors.black)
+    c.setFont("Times-Bold", 13)
+    c.drawCentredString(ANCHO / 2, ALTO - 195, "Curso: Lenguajes formales de programación")
+    c.drawCentredString(ANCHO / 2, ALTO - 217,
+                        "Proyecto: Proyecto Final - Analizador Léxico")
+    c.drawCentredString(ANCHO / 2, ALTO - 239,
+                        "Entregable 3: Implementación del motor léxico")
+    c.setFont("Times-Roman", 11)
+    c.drawCentredString(ANCHO / 2, ALTO - 264, "Docente: Ingeniero José Alberto Veliz Cruz")
+
+    c.setFont("Times-Bold", 13)
+    c.drawString(72, ALTO - 300, "Integrantes")
+
+    estilo_portada = ParagraphStyle(
+        "portada", fontName="Times-Roman", fontSize=11, leading=13,
+        textColor=colors.black
+    )
+    estilo_portada_bold = ParagraphStyle(
+        "portada_bold", fontName="Times-Bold", fontSize=11, leading=13,
+        textColor=colors.black
+    )
+    datos = [
+        [Paragraph("Nombre", estilo_portada_bold),
+         Paragraph("Carné", estilo_portada_bold),
+         Paragraph("Carrera", estilo_portada_bold)],
+        [Paragraph("Cristian Gabriel<br/>Ramírez Morales", estilo_portada),
+         Paragraph("202540362", estilo_portada), Paragraph("Sistemas", estilo_portada)],
+        [Paragraph("Enrique José Sosa<br/>Caal", estilo_portada),
+         Paragraph("202544363", estilo_portada), Paragraph("Sistemas", estilo_portada)],
+        [Paragraph("José Roberto<br/>Posadas Ascencio", estilo_portada),
+         Paragraph("202544488", estilo_portada), Paragraph("Sistemas", estilo_portada)],
+    ]
+    tabla_portada = Table(datos, colWidths=[160, 105, 105],
+                          rowHeights=[20, 43, 43, 43])
+    tabla_portada.setStyle(TableStyle([
+        ("GRID", (0, 0), (-1, -1), 0.7, colors.black),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 7),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+        ("ALIGN", (0, 0), (-1, 0), "CENTER"),
+    ]))
+    tabla_portada.wrapOn(c, 370, 180)
+    tabla_portada.drawOn(c, (ANCHO - 370) / 2, ALTO - 495)
+
+    c.setFont("Times-Bold", 12)
+    c.drawString(126, ALTO - 535, "Enlace de GitHub:")
+    enlace = "https://github.com/Zenite50/C-Extended"
+    c.setFont("Times-Roman", 12)
+    c.setFillColor(colors.HexColor("#3E7E9E"))
+    c.drawString(233, ALTO - 535, enlace)
+    c.linkURL(enlace, (233, ALTO - 539, 466, ALTO - 522), relative=0)
+
+    c.setFillColor(colors.black)
+    c.setFont("Times-Roman", 12)
+    c.drawCentredString(ANCHO / 2, 74, "Fecha de entrega: 28 de septiembre de 2026")
+    c.showPage()
 
 
 def subtitulo(c, texto, y):
@@ -99,8 +163,10 @@ c = canvas.Canvas(str(SALIDA), pagesize=A4)
 c.setTitle("Entregable 3 - Motor léxico - Ramírez, Sosa y Posadas")
 c.setAuthor("Cristian Gabriel Ramírez Morales; Enrique José Sosa Caal; José Roberto Posadas Ascencio")
 
-# Página 1: alcance e implementación.
-y = encabezado(c, 1, "Motor léxico en C#")
+portada(c)
+
+# Página 2: alcance e implementación.
+y = encabezado(c, 2, "Motor léxico en C#")
 y = bloque(c, "<b>Docente:</b> Ing. José Alberto Veliz Cruz. <b>Integrantes:</b> Cristian Gabriel Ramírez Morales (202540362), Enrique José Sosa Caal (202544363) y José Roberto Posadas Ascencio (202544488). <b>Preparación:</b> 28 de septiembre de 2026.", y)
 y = subtitulo(c, "Alcance de esta etapa", y - 3)
 y = bloque(c, "Se implementó el núcleo del analizador a partir del esqueleto del Entregable 2. Procesa archivos de texto y entrega tokens con lexema, categoría, línea y columna; una tabla de símbolos sin duplicados; y errores léxicos con recuperación. El formulario gráfico conservado en la solución corresponde a la integración prevista para el Entregable 4.", y)
@@ -121,8 +187,8 @@ for texto in [
     y = bloque(c, "• " + texto, y, "normal")
 c.showPage()
 
-# Página 2: evidencia y resultados.
-y = encabezado(c, 2, "Pruebas y resultados")
+# Página 3: evidencia y resultados.
+y = encabezado(c, 3, "Pruebas y resultados")
 y = bloque(c, "Se ejecutó un programa de consola con los tres archivos del Entregable 1 y dos archivos nuevos. Además de los conteos, las 28 verificaciones comprueban categorías, posiciones, unicidad de símbolos, reinicio y continuidad tras errores.", y)
 y = tabla(c, [
     ["Archivo", "Tokens", "Símbolos", "Errores", "Resultado"],
@@ -144,8 +210,8 @@ y = bloque(c, "<b>Interpretación:</b> el carácter <b>@</b> del archivo origina
 y = bloque(c, "<b>Resultado global:</b> 28 verificaciones aprobadas y 0 fallidas. La salida completa se conserva en <i>Pruebas/evidencia_pruebas_entregable3.txt</i>.", y)
 c.showPage()
 
-# Página 3: dificultades, reproducción y trazabilidad.
-y = encabezado(c, 3, "Validación y cierre")
+# Página 4: dificultades, reproducción y trazabilidad.
+y = encabezado(c, 4, "Validación y cierre")
 y = subtitulo(c, "Dificultades y soluciones", y)
 for texto in [
     "<b>Esqueleto sin lógica:</b> el ZIP contenía las clases del núcleo vacías. Se implementó el reconocimiento en esas clases y se mantuvo separado del formulario.",
@@ -158,7 +224,7 @@ y = bloque(c, "La solución original de Windows Forms (objetivo .NET Framework 4
 y = bloque(c, "<font name='Arial-Bold'>dotnet run --project PruebasConsola\\PruebasConsola.csproj -- .\\Pruebas</font>", y, "small")
 y = bloque(c, "El comando de compilación del proyecto antiguo desde el SDK instalado requirió la propiedad <i>GenerateResourceMSBuildArchitecture=CurrentArchitecture</i> por la tarea de recursos de MSBuild. En Visual Studio con las herramientas de escritorio de .NET Framework 4.8 se puede compilar la solución de forma habitual.", y)
 y = subtitulo(c, "Trazabilidad y alcance pendiente", y - 4)
-y = bloque(c, "Se usaron como referencia la consigna <i>Proyecto_Analizador_Lexico_CSharp_WinForms.pdf</i> (Entregable 3, páginas 10-11), la especificación léxica del grupo y el documento del Entregable 2. El repositorio indicado por el grupo en este último es <link href='https://github.com/Zenite50/C-Extended' color='#147D82'>github.com/Zenite50/C-Extended</link>; esta copia local aún no constituye un tag o release publicado. El enlace al video se agregará al momento de entregar.", y)
+y = bloque(c, "Se usaron como referencia la consigna <i>Proyecto_Analizador_Lexico_CSharp_WinForms.pdf</i> (Entregable 3, páginas 10-11), la especificación léxica del grupo y el documento del Entregable 2. El repositorio del grupo es <link href='https://github.com/Zenite50/C-Extended' color='#147D82'>github.com/Zenite50/C-Extended</link>. El <link href='https://1drv.ms/v/c/1d3c238191e93468/IQDIPjdBdGY1S7qOaWde8RWDAV8ziTD5rBrfi_h5XLoNF24?e=hWsJN0' color='#147D82'>video de demostración en OneDrive</link> dura 3 minutos y 48 segundos y no se almacena en el repositorio.", y)
 y = bloque(c, "<b>Uso de IA:</b> Codex asistió en la implementación, la elaboración de pruebas y la redacción de este informe. El grupo debe revisar, comprender y declarar este apoyo al realizar sus propios commits y la entrega, conforme a las normas del proyecto.", y)
 y = bloque(c, "<b>Siguiente etapa:</b> conectar el núcleo probado con los controles Windows Forms y la exportación de resultados, actividades del Entregable 4.", y)
 c.showPage()

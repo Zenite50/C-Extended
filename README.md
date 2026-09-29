@@ -27,6 +27,8 @@ Se conservan las reservadas del Entregable 1 (`func`, `var`, `nil`, etc.) y se i
 
 En `prueba3_errores.txt`, el símbolo `@` queda dentro de un comentario `/*` sin cierre. Por eso el archivo produce cuatro errores, no cinco. `prueba4_recuperacion.txt` comprueba `@` fuera de comentarios y la continuación del análisis.
 
-## Antes de la entrega académica
+## Video y entrega académica
 
-El grupo debe revisar el código y el informe, registrar sus propios commits en el repositorio, crear la etiqueta o release del Entregable 3, grabar el video de 3 a 5 minutos y citar el apoyo de IA según las normas del curso. Ningún commit, etiqueta ni video está incluido en esta copia local.
+El [video de demostración en OneDrive](https://1drv.ms/v/c/1d3c238191e93468/IQDIPjdBdGY1S7qOaWde8RWDAV8ziTD5rBrfi_h5XLoNF24?e=hWsJN0) dura 3 minutos y 48 segundos. Muestra la ejecución sobre los archivos de prueba, los casos con errores léxicos y el resultado de 28 verificaciones aprobadas. El archivo MP4 no se incluye en este repositorio.
+
+El grupo debe revisar y comprender el código y el informe, registrar sus contribuciones reales y citar el apoyo de IA según las normas del curso.
