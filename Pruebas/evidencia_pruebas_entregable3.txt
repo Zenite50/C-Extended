@@ -1,0 +1,40 @@
+ARCHIVO | prueba1_sencillo.txt | tokens=25 | símbolos=3 | errores=0
+APROBADA | Prueba 1: sin errores
+APROBADA | Prueba 1: reservada e identificador
+APROBADA | Prueba 1: += es asignación
+APROBADA | Prueba 1: símbolo único y primera posición
+ARCHIVO | prueba2_medio.txt | tokens=62 | símbolos=9 | errores=0
+APROBADA | Prueba 2: sin errores
+APROBADA | Prueba 2: decimal, for y continue
+ARCHIVO | prueba3_errores.txt | tokens=20 | símbolos=4 | errores=4
+  ERROR 6:13 | Identificador con inicio numérico | 12variable
+  ERROR 9:22 | Número decimal mal formado | 45.12.3
+  ERROR 12:23 | Cadena de texto sin cerrar | "Hola mundo sin comilla de cierre ;
+  ERROR 14:9 | Comentario multilínea sin cerrar | /* Error 4: Comentario multilineal sin cerrar\r\n\r\n        // Error 5: Caracter no permitido\r\n        var total = 100 @ 50;\r\n    }\r\n}\r\n
+APROBADA | Prueba 3: cuatro errores visibles
+APROBADA | Prueba 3: identificación de errores
+APROBADA | Prueba 3: @ permanece dentro del comentario abierto
+ARCHIVO | prueba4_recuperacion.txt | tokens=21 | símbolos=4 | errores=2
+  ERROR 2:1 | Carácter no permitido | @
+  ERROR 3:14 | Número decimal mal formado | 45.12.3
+APROBADA | Prueba 4: carácter prohibido y número mal formado
+APROBADA | Prueba 4: sigue hasta final tras dos errores
+ARCHIVO | prueba5_categorias.txt | tokens=59 | símbolos=7 | errores=0
+APROBADA | Prueba 5: sin errores
+APROBADA | Prueba 5: categoría TK_RESERVADA
+APROBADA | Prueba 5: categoría TK_IDENTIFICADOR
+APROBADA | Prueba 5: categoría TK_NUM_ENTERO
+APROBADA | Prueba 5: categoría TK_CADENA
+APROBADA | Prueba 5: categoría TK_CARACTER
+APROBADA | Prueba 5: categoría TK_OP_ARITMETICO
+APROBADA | Prueba 5: categoría TK_OP_RELACIONAL
+APROBADA | Prueba 5: categoría TK_OP_LOGICO
+APROBADA | Prueba 5: categoría TK_OP_ASIGNACION
+APROBADA | Prueba 5: categoría TK_DELIMITADOR
+APROBADA | Prueba 5: categoría TK_COMENTARIO_LINEA
+APROBADA | Prueba 5: categoría TK_COMENTARIO_BLOQUE
+APROBADA | Extra: recuperación de tres errores
+APROBADA | Extra: columnas con CRLF
+APROBADA | Extra: decimal con dos puntos es un solo error y continúa
+APROBADA | Extra: reinicio limpia símbolos y errores
+TOTAL | aprobadas=28 | fallidas=0

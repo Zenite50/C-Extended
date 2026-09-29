@@ -1,0 +1,25 @@
+namespace Sistema
+{
+    enum Estado
+    {
+        Activo,
+        Inactivo
+    }
+
+    class Proceso
+    {
+        func calcularSuma()
+        {
+            var limite = 10;
+            for (var i = 0; i < limite; i++)
+            {
+                if (i == 5)
+                {
+                    continue;
+                }
+                var suma = i + 2.5;
+            }
+            return nil;
+        }
+    }
+}

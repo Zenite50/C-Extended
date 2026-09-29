@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace C_Extended.Core
 {
-    internal class Token
+    public sealed class Token
     {
+        public string Lexema { get; private set; }
+        public string TipoToken { get; private set; }
+        public int Linea { get; private set; }
+        public int Columna { get; private set; }
+
+        public Token(string lexema, string tipoToken, int linea, int columna)
+        {
+            Lexema = lexema;
+            TipoToken = tipoToken;
+            Linea = linea;
+            Columna = columna;
+        }
     }
 }
